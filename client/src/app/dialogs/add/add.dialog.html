@@ -1,0 +1,116 @@
+<div class="container">
+  <h3 mat-dialog-title>Add new Patient</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field color="accent">
+        <textarea
+          matInput
+          #input
+          class="form-control"
+          placeholder="Name"
+          [(ngModel)]="data.name"
+          name="name"
+          required
+        ></textarea>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!--Contains mat-hint for characters count and has maxLengt set-->
+    <div class="form">
+      <mat-form-field color="accent">
+        <input
+          matInput
+          #inputstate
+          class="form-control"
+          placeholder="Age"
+          [(ngModel)]="data.age"
+          name="age"
+          maxlength="3"
+          required
+        />
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <textarea
+          matInput
+          #input
+          class="form-control"
+          placeholder="Gender"
+          [(ngModel)]="data.gender"
+          name="gender"
+          required
+        ></textarea>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input
+          matInput
+          placeholder="Patient ID"
+          [(ngModel)]="data.patientId"
+          name="patientId"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input
+          matInput
+          placeholder="From"
+          [(ngModel)]="data.from"
+          name="from"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input
+          matInput
+          placeholder="Mobile Number"
+          [(ngModel)]="data.mobileNumber"
+          name="mobileNumber"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input
+          matInput
+          placeholder="Last Meet"
+          [(ngModel)]="data.lastMeet"
+          name="lastMeet"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="DOB" [(ngModel)]="data.dob" name="dob" />
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+      <button
+        mat-button
+        [type]="submit"
+        [disabled]="!formControl.valid"
+        [mat-dialog-close]="1"
+        (click)="confirmAdd()"
+      >
+        Save
+      </button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>
